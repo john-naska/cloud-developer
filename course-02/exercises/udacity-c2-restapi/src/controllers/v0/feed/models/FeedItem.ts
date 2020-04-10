@@ -1,7 +1,7 @@
 import {Table, Column, Model, HasMany, PrimaryKey, CreatedAt, UpdatedAt, ForeignKey} from 'sequelize-typescript';
 import { User } from '../../users/models/User';
 
-@Table
+@Table // sequelize decorator analogue to java annotations
 export class FeedItem extends Model<FeedItem> {
   @Column
   public caption!: string;

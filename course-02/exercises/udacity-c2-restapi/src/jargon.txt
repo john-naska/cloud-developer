@@ -1,0 +1,18 @@
+Added by John Naska 10th April 2020
+
+TypeScript          Sequelizer          Database
+
+class               model (@Table)      table
+
+instance                                row
+
+class variables     parameters          columns
+
+static variables    seeding             default rows of Database
+
+
+
+
+Terms: 
+
+- migration in Sequelizer is analogue to version control in Git

@@ -1,8 +1,8 @@
-import {Sequelize} from 'sequelize-typescript';
-import { config } from './config/config';
+import {Sequelize} from 'sequelize-typescript'; // this is the actual library that it used from MPM
+import { config } from './config/config'; // some configs from a config file
 
 
-const c = config.dev;
+const c = config.postgress;
 
 // Instantiate new Sequelize instance!
 export const sequelize = new Sequelize({

@@ -1,4 +1,11 @@
 export const config = {
+  "postgress": {
+    "username": "udagramnaskadev",
+    "password": "udagramnaskadev",
+    "database": "udagramnaskadev",
+    "host": "udagramnaskadev.cxubidwohfa4.eu-central-1.rds.amazonaws.com",
+    "dialect": "postgress"
+  },
   "dev": {
     "username": "",
     "password": "",
