@@ -1,4 +1,4 @@
-import {Sequelize} from 'sequelize-typescript'; // this is the actual library that it used from MPM
+import {Sequelize} from 'sequelize-typescript'; // this is the actual library that it used from npm
 import { config } from './config/config'; // some configs from a config file
 
 

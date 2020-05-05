@@ -18,9 +18,7 @@ router.get('/', async (req: Request, res: Response) => {
     res.send(items); // send the items back to client
 });
 
-//@TODO 
-// ============= STATUS 10.04.2020: GET request for specific pk works if pk exists (see postman 'test' get request). However if id does not exist, postman request stucks in an infite loop
-// ============= problem could be between the lines of 32 to 36
+//@TODO: DONE
 //Add an endpoint to GET a specific resource by Primary Key
 
 router.get('/:id', 
@@ -29,18 +27,18 @@ router.get('/:id',
     // destruct path params to extract primary key
     const { id } = req.params;
 
-    // check to make sure pk exists
-    if (!id) {
-        // respond with an error if pk does not exist
-        res.status(400).send('id does\'t exist');
-    }
-
     // try to find feed by primary key
     const item = await FeedItem.findByPk(id);
-    if(item.url) {
-           item.url = AWS.getGetSignedUrl(item.url);
+
+    if(item == null) {
+        // respond with an error if pk does not exist
+        return res.status(400).send('id does\'t exist');
+    } else {
+            if(item.url) {
+                item.url = AWS.getGetSignedUrl(item.url);
+        }
+        return res.status(200).send(item); // send the item back to client
     }
-    res.status(200).send(item); // send the item back to client
 });
 
 
@@ -49,6 +47,34 @@ router.patch('/:id',
     requireAuth, 
     async (req: Request, res: Response) => {
         //@TODO try it yourself
+
+// // ******************
+//     const caption = req.body.caption; // save the caption in local variable
+//     console.log("===============================")
+//     console.log(caption)
+//     const fileName = req.body.url; // save fileName in local variable
+//     console.log(fileName)
+//     // // check Caption is valid
+//     // if (!caption) {
+//     //     return res.status(400).send({ message: 'Caption is required or malformed' });
+//     // }
+
+//     // // check Filename is valid
+//     // if (!fileName) {
+//     //     return res.status(400).send({ message: 'File url is required' });
+//     // }
+
+//     // const item = await new FeedItem({ // if tests pass new FeedItem is instanciated here
+//     //         caption: caption,
+//     //         url: fileName
+//     // });
+
+//     // const saved_item = await item.save(); // Sequelize interface is used to save that item
+
+//     // saved_item.url = AWS.getGetSignedUrl(saved_item.url);
+//     // res.status(201).send(saved_item);
+
+// // ******************
         res.send(500).send("not implemented")
 });
 
